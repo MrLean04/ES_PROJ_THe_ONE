@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>FlightsToES</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/landing-page.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+     <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">FlightsToES</a>
+      <button onclick="window.location.href='index.html'"  class="btn btn-primary" >Back<i class="fas fa-back" style="font-size:15px;color:white;"></i> </button>
+    </div>
+  </nav>
+  <!-- filter bar -->
+  	
+    
+      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+      	<table>	
+        	<label for="cars" id="label1">&nbsp;Choose a filter: &nbsp;</label>
+        <select name="filters" id="filters">
+          <option value="Destination">Destination</option>
+          <option value="Geographiccallzone">Geographical zone </option>
+          <option value="Aircraft">Aircraft</option>
+          <option value="TimeInterval">Time interval</option>
+        </select>
+        	<label>&nbsp; </label>
+    	
+    	
+        <form action="/action_page.php">
+          <label for="textOpt" id="label2">Filter: &nbsp;</label>
+          <input type="text" id="fname" name="fname"><br><br>
+          <button onclick="window.location.href='filterpage.html'"  class="btn btn-primary" id="apply">Apply Filters &nbsp; &nbsp; &nbsp; &nbsp;<i class="fas fa-bars" style="font-size:15px;color:white;"></i> </button-->
+        </form>
+  
+
+    </table>
+
+        </div>
+    
+  
+
+  <!-- Image Showcases -->
+  <section class="showcase">
+    <div class="container-fluid p-0">
+      <p>
+        <span th:text="'Today is: ' + ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" th:remove="tag"></span>
+    </p>
+    
+    <table>
+        <tr>
+            <th>icao24</th>
+            <td> | </td>
+            <th>firstSeen</th>
+            <td> | </td>
+            <th>estDepartureAirport</th>
+            <td> | </td>
+            <th>lastSeen</th>
+            <td> | </td>
+            <th>estArrivalAirport</th>
+            <td> | </td>
+            <th>callsign</th>
+            <td> | </td>
+            <th>estDepartureAirportHorizDistance</th>
+            <td> | </td>
+            <th>estDepartureAirportVertDistance</th>
+            <td> | </td>
+            <th>estArrivalAirportHorizDistance</th>
+            <td> | </td>
+            <th>estArrivalAirportVertDistance</th>
+            <td> | </td>
+            <th>departureAirportCandidatesCount</th>
+            <td> | </td>
+            <th>arrivalAirportCandidatesCount</th>
+        </tr>
+        <tr th:each="plane : ${Plane}">
+            <td th:text="${plane.icao24}">Icao24</td>
+            <td> | </td>
+            <td th:text="${plane.firstSeen}">firstSeen</td>
+            <td> | </td>
+            <td th:text="${plane.estDepartureAirport}">estDepartureAirport</td>
+            <td> | </td>
+            <td th:text="${plane.lastSeen}">lastSeen</td>
+            <td> | </td>
+            <td th:text="${plane.estArrivalAirport}">estArrivalAirport</td>
+            <td> | </td>
+            <td th:text="${plane.callsign}">callsign</td>
+            <td> | </td>
+            <td th:text="${plane.estDepartureAirportHorizDistance}">estDepartureAirportHorizDistance</td>
+            <td> | </td>
+            <td th:text="${plane.estDepartureAirportVertDistance}">estDepartureAirportVertDistance</td>
+            <td> | </td>
+            <td th:text="${plane.estArrivalAirportHorizDistance}">estArrivalAirportHorizDistance</td>
+            <td> | </td>
+            <td th:text="${plane.estArrivalAirportVertDistance}">estArrivalAirportVertDistance</td>
+            <td> | </td>
+            <td th:text="${plane.departureAirportCandidatesCount}">departureAirportCandidatesCount</td>
+            <td> | </td>
+            <td th:text="${plane.arrivalAirportCandidatesCount}">arrivalAirportCandidatesCount</td>
+    </table>
+		
+
+      
+    </div>
+  </section>
+
+  <!-- Icons Grid -->
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-satellite-dish m-auto text-primary"></i>
+            </div>
+            <h3>Live Flight Tracking</h3>
+            <p class="lead mb-0">Track a flight live and see all the latest updates.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-database m-auto text-primary"></i>
+            </div>
+            <h3>Flights History</h3>
+            <p class="lead mb-0">Find information about previous flights.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-laptop m-auto text-primary"></i>
+            </div>
+            <h3>Simple and easy to use UI</h3>
+            <p class="lead mb-0">All the information you need right before your eyes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+     <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="#">About</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Contact</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; FlyToES 2021. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
