@@ -2,16 +2,22 @@ package ES.flysite;
 
 import java.util.Arrays;
 import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 //@JsonFormat(shape = JsonFormat.Shape.ARRAY)
-
+@Entity
 public class Value {
 
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
     private String icao24;
     private int firstSeen;
     private String estDepartureAirport;
@@ -25,9 +31,13 @@ public class Value {
     private int departureAirportCandidatesCount;
     private int arrivalAirportCandidatesCount;
 
-    public Value() {
-        //
-    }
+    protected Value() {}
+
+    
+
+    public Long getId() {
+		return id;
+	}
 
     public String getIcao24() {
         return this.icao24;
@@ -138,6 +148,26 @@ public class Value {
                 + estDepartureAirport + ", estDepartureAirportHorizDistance:" + estDepartureAirportHorizDistance
                 + ", estDepartureAirportVertDistance:" + estDepartureAirportVertDistance + ", firstSeen:" + firstSeen
                 + ", icao24:" + icao24 + ", lastSeen:" + lastSeen + "}"; 
+    }
+
+
+
+    public Value(String icao24, int firstSeen, String estDepartureAirport, int lastSeen, String estArrivalAirport,
+            String callsign, int estDepartureAirportHorizDistance, int estDepartureAirportVertDistance,
+            int estArrivalAirportHorizDistance, int estArrivalAirportVertDistance, int departureAirportCandidatesCount,
+            int arrivalAirportCandidatesCount) {
+        this.icao24 = icao24;
+        this.firstSeen = firstSeen;
+        this.estDepartureAirport = estDepartureAirport;
+        this.lastSeen = lastSeen;
+        this.estArrivalAirport = estArrivalAirport;
+        this.callsign = callsign;
+        this.estDepartureAirportHorizDistance = estDepartureAirportHorizDistance;
+        this.estDepartureAirportVertDistance = estDepartureAirportVertDistance;
+        this.estArrivalAirportHorizDistance = estArrivalAirportHorizDistance;
+        this.estArrivalAirportVertDistance = estArrivalAirportVertDistance;
+        this.departureAirportCandidatesCount = departureAirportCandidatesCount;
+        this.arrivalAirportCandidatesCount = arrivalAirportCandidatesCount;
     } 
 
 

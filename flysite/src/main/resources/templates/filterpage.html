@@ -93,7 +93,7 @@
             <td> | </td>
             <th>arrivalAirportCandidatesCount</th>
         </tr>
-        <tr th:each="plane : ${Plane}">
+        <tr th:each="plane : ${planes}">
             <td th:text="${plane.icao24}">Icao24</td>
             <td> | </td>
             <td th:text="${plane.firstSeen}">firstSeen</td>
